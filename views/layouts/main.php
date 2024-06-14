@@ -29,38 +29,52 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
+
 <header id="header">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>'
-        ]
-    ]);
-    NavBar::end();
-    ?>
-</header>
-
-
+        <nav>
+            <div class="container menu">
+                <ul class="site-navigation">
+                    <li><a href="">Информация</a></li>
+                    <li><a href="">Новости</a></li>
+                    <li><a href="">Расписание</a></li>
+                    <li><a href="">Отделы</a></li>
+                    <li><a href="">Контакты</a></li>
+                </ul>
+                <a class="vhod" href="">Вход</a>
+            </div>
+        </nav>
+        <figure class="main-header-logo">
+            <a>
+                <h1 class="ctulh">Ктулху</h1>
+            </a>
+        </figure>
+    </header>
+<main id="main" class="flex-shrink-0" role="main">
+    <div>
+        <?php if (!empty($this->params['breadcrumbs'])): ?>
+            <?= Breadcrumbs::widget(['links' => $this->params['breadcrumbs']]) ?>
+        <?php endif ?>
+        <?= Alert::widget() ?>
+        <?= $content ?>
+    </div>
+</main>
+    <footer class="podval">
+        <main class="container">
+            <p>
+                Управление персоналом и рабочими процессами ООО ОАО "Ни одного сайта подобного не встретил."<br>
+                Адрес: г.Махачкала ул.Гаджиева<br>
+                <a href="">Как нас найти</a><br>
+                Телефон: 8 (977) 966-95-94
+            </p>
+            <p>
+                РАЗРАБОТАНО:<br>
+                <button class="razrab">Мною</button>
+            </p>
+        </main>
+    </footer>
 
 <?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
+

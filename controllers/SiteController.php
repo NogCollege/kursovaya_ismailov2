@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use app\models\LoginForm;
 use app\models\SignupForm;
 
+
 class SiteController extends Controller
 {
     public function behaviors()
@@ -29,6 +30,11 @@ class SiteController extends Controller
                 ],
             ],
         ];
+    }
+    public function actionIndex()
+    {
+        return $this->render('index', [
+        ]);
     }
 
     public function actions()

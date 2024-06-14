@@ -1,0 +1,198 @@
+header {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: black;
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+}
+
+ctulh {
+  padding-top: 20px;
+  color: white;
+}
+
+.site-navigation li {
+  display: inline;
+  list-style-type: none;
+}
+
+.main-header-logo {
+  text-align: center;
+}
+
+a:visited {
+  color: white;
+}
+
+.appt {
+  width: 300px;
+}
+
+.podval .container {
+  display: flex;
+  margin-top: 65px;
+  justify-content: center;
+  background-color: #1c1919;
+  color: #d0d0d0;
+  width: 100%;
+}
+
+.podval p {
+  font-size: 14px;
+  line-height: 24px;
+  margin: 30px 55px;
+}
+
+.cety {
+  margin-top: 15px;
+  border: 1px solid black;
+  background-color: black;
+  width: 43px;
+  height: 43px;
+}
+
+.cety :hover {
+  background-color: rgb(155, 0, 26);
+}
+
+.razrab {
+  margin-top: 20px;
+  border: 1px solid black;
+  background-color: black;
+  color: white;
+  width: 130px;
+  height: 60px;
+}
+
+.razrab:hover {
+  background-color: rgb(234, 0, 255);
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+.site-navigation a:hover {
+  background-color: gray;
+}
+
+a {
+  text-decoration: none;
+}
+
+.vhod:active::before,
+.vhod:hover::before {
+  opacity: 1;
+}
+
+.site-navigation a {
+  padding: 20px 25px;
+}
+
+.katal {
+  display: flex;
+  flex-direction: row;
+  column-count: 2;
+}
+.katal li {
+  display: flex;
+  width: 424px;
+  height: 483px;
+  background-color: #FFFFFF;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+.katal li img {
+  width: 286px;
+  height: 153px;
+}
+.katal li h4 {
+  font-size: 20px;
+  font-family: "PP Pangram Sans";
+  padding-top: 20px;
+  padding-left: 40px;
+}
+.katal li .text-s2 {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-left: 40px;
+}
+.katal li .text-s2 img {
+  width: 25px;
+  height: 18px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.katal li .text-s2 p {
+  font-size: 13px;
+  font-family: "PP Pangram Sans";
+  color: #707070;
+}
+.katal li .text-s2 .pa {
+  padding-left: 10px;
+}
+.katal li .cen {
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+  padding-left: 40px;
+}
+.katal li .cen button {
+  width: 135px;
+  height: 40px;
+  color: white;
+  border-radius: 6px;
+  border: solid 0px;
+  font-family: "PP Pangram Sans";
+  font-size: 12px;
+  background: linear-gradient(to top right, #9F7437, #E3D293);
+}
+.katal li .cen span {
+  font-size: 20px;
+  color: black;
+}
+.katal li .cen p {
+  font-size: 13px;
+  font-family: "PP Pangram Sans";
+  color: #707070;
+  padding-left: 50px;
+  padding-top: 5px;
+}
+.katal li .img-kat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.katal li hr {
+  width: 80%;
+  margin-top: 20px;
+  margin-left: 10%;
+  color: #EBEBEB;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+/*# sourceMappingURL=paopap.css.map */
