@@ -9,6 +9,7 @@ use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
 use yii\bootstrap5\Nav;
 use yii\bootstrap5\NavBar;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -34,13 +35,15 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <nav>
             <div class="container menu">
                 <ul class="site-navigation">
-                    <li><a href="">Информация</a></li>
+                    <li><a href="">Мой профиль</a></li>
                     <li><a href="">Новости</a></li>
                     <li><a href="">Расписание</a></li>
                     <li><a href="">Отделы</a></li>
                     <li><a href="">Контакты</a></li>
                 </ul>
-                <a class="vhod" href="">Вход</a>
+                <a  href="<?= Url::to(['site/login']) ?>">Войти</a>
+                <a  href="<?= Url::to(['/site/logout'], ['data-method' => 'post']) ?>">Выход</a>
+                <a  href="<?= Url::to(['site/person']) ?>">Создать запись</a>
             </div>
         </nav>
         <figure class="main-header-logo">
