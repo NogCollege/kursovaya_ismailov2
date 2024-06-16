@@ -35,7 +35,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         <nav>
             <div class="container menu">
                 <ul class="site-navigation">
-                    <li><a href="">Мой профиль</a></li>
+                    <li><a  href="<?= Url::to(['site/profile']) ?>">Мой профиль</a></li>
                     <li><a href="">Новости</a></li>
                     <li><a href="">Расписание</a></li>
                     <li><a href="">Отделы</a></li>
@@ -43,7 +43,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 </ul>
                 <a  href="<?= Url::to(['site/login']) ?>">Войти</a>
                 <a  href="<?= Url::to(['/site/logout'], ['data-method' => 'post']) ?>">Выход</a>
-                <a  href="<?= Url::to(['site/person']) ?>">Создать запись</a>
+                <?php if (!Yii::$app->user->isGuest && Yii::$app->user->identity->hasRole('manager')): ?>
+                    <li><?= Html::a('Сделать запись', ['/site/task']) ?></li>
+                <?php endif; ?>
             </div>
         </nav>
         <figure class="main-header-logo">

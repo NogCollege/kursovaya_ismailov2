@@ -4,77 +4,76 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
-/**
- * This is the model class for table "task".
- *
- * @property int $id
- * @property string $title
- * @property string $description
- * @property string $due_date
- * @property string $status
- * @property int $assigned_to
- * @property int $created_by
- * @property int $department_id
- *
- * @property User $assignedTo
- * @property User $createdBy
- * @property Department $department
- */
 class Task extends ActiveRecord
 {
-    /**
-     * {@inheritdoc}
-     */
+    const STATUS_PENDING = 1;
+    const STATUS_IN_PROGRESS = 2;
+    const STATUS_COMPLETED = 3;
+
     public static function tableName()
     {
         return 'task';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [
-            [['title', 'due_date', 'assigned_to', 'created_by', 'department_id'], 'required'],
-            [['description', 'status'], 'string'],
+            [['title', 'description', 'due_date', 'user_id', 'department_id', 'status'], 'required'],
+            [['description', 'comment'], 'string'],
             [['due_date'], 'safe'],
-            [['assigned_to', 'created_by', 'department_id'], 'integer'],
+            [['user_id', 'department_id', 'status'], 'integer'],
             [['title'], 'string', 'max' => 255],
-            [['assigned_to'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['assigned_to' => 'id']],
-            [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['created_by' => 'id']],
-            [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::class, 'targetAttribute' => ['department_id' => 'id']],
         ];
     }
 
-    /**
-     * Gets query for [[AssignedTo]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAssignedTo()
+    public function attributeLabels()
     {
-        return $this->hasOne(User::class, ['id' => 'assigned_to']);
+        return [
+            'title' => 'Название',
+            'description' => 'Описание',
+            'due_date' => 'Срок выполнения',
+            'status' => 'Статус',
+            'comment' => 'Комментарий',
+            'user_id' => 'Исполнитель',
+            'department_id' => 'Отдел',
+        ];
     }
 
-    /**
-     * Gets query for [[CreatedBy]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCreatedBy()
+    public function behaviors()
     {
-        return $this->hasOne(User::class, ['id' => 'created_by']);
+        return [
+            'timestamp' => [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'created_at',
+                'updatedAtAttribute' => 'updated_at',
+                'value' => new Expression('NOW()'),
+            ],
+        ];
+    }
+    public static function getStatusLabels()
+    {
+        return [
+            self::STATUS_PENDING => 'В ожидании',
+            self::STATUS_IN_PROGRESS => 'В процессе',
+            self::STATUS_COMPLETED => 'Завершена',
+        ];
+    }
+    public function getEmployee()
+    {
+        return $this->hasOne(Employee::className(), ['id' => 'assigned_to']);
     }
 
-    /**
-     * Gets query for [[Department]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
     public function getDepartment()
     {
-        return $this->hasOne(Department::class, ['id' => 'department_id']);
+        return $this->hasOne(Department::className(), ['id' => 'department_id']);
     }
+
 }
